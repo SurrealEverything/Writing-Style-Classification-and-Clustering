@@ -16,7 +16,7 @@ def evaluateClustering(y_true, y_pred, model):
     ars = adjusted_rand_score(y_true, y_pred)
     print('Adjusted random score: ', ars)
 
-    ss = silhouette_score(y_true, y_pred)
+    ss = silhouette_score(y_true.reshape(-1, 1), y_pred)
     print('Silhouette score: ', ss)
 
     hs = homogeneity_score(y_true, y_pred)
@@ -24,5 +24,3 @@ def evaluateClustering(y_true, y_pred, model):
 
     cs = completeness_score(y_true, y_pred)
     print('Completeness score: ', cs)
-
-    # work in progress

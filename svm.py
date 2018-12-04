@@ -9,7 +9,7 @@ from sklearn.svm import SVC
 from gridSearch import gridSearch
 
 
-def svm(X_train, X_test, y_train, method=2):
+def svm(X_train, X_test, y_train, method=1):
 
     if method == 0:
 
@@ -34,7 +34,7 @@ def svm(X_train, X_test, y_train, method=2):
         param_grid = [
                     {
                         'C': [0.001, 0.01, 0.1, 1, 10, 30, 70],
-                        'kernel': ['rbf', 'linear', 'sigmoid', 'precomputed'],
+                        'kernel': ['rbf', 'linear', 'sigmoid'],
                         'gamma': [0.001, 0.01, 0.1, 1],
                     },
                     {

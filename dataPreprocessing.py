@@ -5,7 +5,7 @@ Created on Sun Dec  2 13:36:11 2018
 
 @author: gabriel
 """
-# import numpy as np
+import numpy as np
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -31,6 +31,7 @@ def processData(
     X = df.values.ravel()
     classes = df.columns.values.tolist()
     y = classes * 20
+    y = np.asarray(y)
 
     # encoding string labels into numeric values
     le = preprocessing.LabelEncoder()
@@ -45,8 +46,8 @@ def processData(
 
     if reduceDim:
         pca = PCA(n_components=reduceDim)
-        pca.fit(X)
-        X = pca.components_
+        X = pca.fit_transform(X)
+        # y = pca.transform(y.reshape(-1, 1))
 
     if testSet:
         # split data into representative train/test sets
