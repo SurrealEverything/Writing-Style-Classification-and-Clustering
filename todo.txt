@@ -1,0 +1,7 @@
+-fine-tune hyperparameters(svm, clustering, pcas) 
+-add visualizations(PCAs, TSNE) 
+-analyse data 
+-experiment vectorizers 
+-add PCAs to 1st homework 
+-pdf 
+

@@ -26,20 +26,20 @@ def report(results, stop, n_top=1):
 
 
 def writeParamsToFile(modelName, paramsGd, stop, best_score):
-    params = 't: ' + str(int(stop)) + ', '
-    params += 's: ' + str(best_score) + ': '
+    params = 't=' + str(int(stop)) + ', '
+    params += 's=' + str(best_score) + ': '
     params += modelName + '('
     for key, val in paramsGd.items():
         if isinstance(val, str):
             strVal = val.__repr__()
         else:
             strVal = str(val)
-        params += key + ' = ' + strVal + ', '
-        params = params[:-2]
-        params += ')\n'
+        params += key + '=' + strVal + ', '
+    params = params[:-2]
+    params += ')\n'
 
-        f = open("bestParams.txt", "a")
-        f.write(params)
+    f = open("bestParams.txt", "a")
+    f.write(params)
 
 
 def gridSearch(X_train, y_train, model, param_grid):

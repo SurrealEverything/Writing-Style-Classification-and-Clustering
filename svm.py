@@ -20,8 +20,8 @@ def svm(X_train, X_test, y_train, method=1):
         y_pred = model.predict(X_test)
 
     if method == 1:
-        # todo: add overnight params from gridSearch
-        model = SVC()
+        # params from gridSearch
+        model = SVC(C=30, gamma=1)
 
         model.fit(X_train, y_train)
 

@@ -22,7 +22,7 @@ def plot_confusion_matrix(cm,
                           cmap=plt.cm.Blues,
                           scaling=4):
     """This function prints and plots the confusion matrix."""
-
+    plt.figure()
     plt.imshow(cm, interpolation='nearest', cmap=cmap)
     plt.title(title)
     plt.colorbar()
@@ -40,6 +40,7 @@ def plot_confusion_matrix(cm,
     plt.ylabel('True label')
     plt.xlabel('Predicted label')
     # plt.tight_layout()
+    plt.show()
 
 
 def evaluateClassification(y_true, y_pred, model, classes,
@@ -76,11 +77,6 @@ def evaluateClassification(y_true, y_pred, model, classes,
     print(classification_report(y_true, y_pred, target_names=classes))
 
     if plotConfusion:
-        # Compute confusion matrix
         cnf_matrix = confusion_matrix(y_true, y_pred)
-
-        # Plot non-normalized confusion matrix
-        plt.figure()
         plot_confusion_matrix(cnf_matrix, classes=classes,
                               title=(model + ' Confusion Matrix'))
-        plt.show()

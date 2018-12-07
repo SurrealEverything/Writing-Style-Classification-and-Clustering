@@ -10,7 +10,7 @@ from sklearn.cluster import KMeans
 
 def kmeans(X_train):
 
-    model = KMeans()
+    model = KMeans(n_clusters=20)
 
     model.fit(X_train)
 

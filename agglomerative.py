@@ -10,7 +10,7 @@ from sklearn.cluster import AgglomerativeClustering
 
 def agglomerative(X_train):
 
-    model = AgglomerativeClustering()
+    model = AgglomerativeClustering(n_clusters=20)
 
     model.fit(X_train)
 

@@ -1,0 +1,11 @@
+"""
+for i in range(len(df)):
+    print("Author: " + df.iloc[:, i].name)
+    print(df.iloc[:, i])
+    print("i=", i)
+    print()
+"""
+
+#df = unpivot(tm.makeTimeDataFrame())
+
+#df = pd.DataFrame(nddf, columns = df.columns)
