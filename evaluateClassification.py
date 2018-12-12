@@ -16,12 +16,45 @@ import numpy as np
 import itertools
 
 
-def plot_confusion_matrix(cm,
-                          classes,
-                          title='Confusion matrix',
-                          cmap=plt.cm.Blues,
-                          scaling=4):
-    """This function prints and plots the confusion matrix."""
+def evaluateClassification(y_true, y_pred, model, classes):
+
+    print('\n', model.upper())
+
+    acc = accuracy_score(y_true, y_pred)
+    print('Accuracy: ', acc)
+
+    prMac = precision_score(y_true, y_pred, average='macro')
+    prMic = precision_score(y_true, y_pred, average='micro')
+    prWgh = precision_score(y_true, y_pred, average='weighted')
+    print('\nMacro Precision: ', prMac)
+    print('Micro Precision: ', prMic)
+    print('Weighted Precision: ', prWgh)
+
+    rcMac = recall_score(y_true, y_pred, average='macro')
+    rcMic = recall_score(y_true, y_pred, average='micro')
+    rcWgh = recall_score(y_true, y_pred, average='weighted')
+    print('\nMacro Recall: ', rcMac)
+    print('Micro Recall: ', rcMic)
+    print('Weighted Recall: ', rcWgh)
+
+    f1Mac = f1_score(y_true, y_pred, average='macro')
+    f1Mic = f1_score(y_true, y_pred, average='micro')
+    f1Wgh = f1_score(y_true, y_pred, average='weighted')
+    print('\nMacro F1: ', f1Mac)
+    print('Micro F1: ', f1Mic)
+    print('Weighted F1: ', f1Wgh)
+
+    print(classification_report(y_true, y_pred, target_names=classes))
+
+    cnf_matrix = confusion_matrix(y_true, y_pred)
+    plotConfusionMatrix(cnf_matrix, classes=classes,
+                        title=(model + ' Confusion Matrix'))
+
+
+def plotConfusionMatrix(cm,
+                        classes,
+                        title='Confusion matrix',
+                        cmap=plt.cm.Blues):
     plt.figure()
     plt.imshow(cm, interpolation='nearest', cmap=cmap)
     plt.title(title)
@@ -41,42 +74,3 @@ def plot_confusion_matrix(cm,
     plt.xlabel('Predicted label')
     # plt.tight_layout()
     plt.show()
-
-
-def evaluateClassification(y_true, y_pred, model, classes,
-                           displayDetailedView=True,
-                           plotConfusion=True):
-
-    print('\n', model.upper())
-
-    if displayDetailedView:
-        acc = accuracy_score(y_true, y_pred)
-        print('Accuracy: ', acc)
-
-        prMac = precision_score(y_true, y_pred, average='macro')
-        prMic = precision_score(y_true, y_pred, average='micro')
-        prWgh = precision_score(y_true, y_pred, average='weighted')
-        print('\nMacro Precision: ', prMac)
-        print('Micro Precision: ', prMic)
-        print('Weighted Precision: ', prWgh)
-
-        rcMac = recall_score(y_true, y_pred, average='macro')
-        rcMic = recall_score(y_true, y_pred, average='micro')
-        rcWgh = recall_score(y_true, y_pred, average='weighted')
-        print('\nMacro Recall: ', rcMac)
-        print('Micro Recall: ', rcMic)
-        print('Weighted Recall: ', rcWgh)
-
-        f1Mac = f1_score(y_true, y_pred, average='macro')
-        f1Mic = f1_score(y_true, y_pred, average='micro')
-        f1Wgh = f1_score(y_true, y_pred, average='weighted')
-        print('\nMacro F1: ', f1Mac)
-        print('Micro F1: ', f1Mic)
-        print('Weighted F1: ', f1Wgh)
-
-    print(classification_report(y_true, y_pred, target_names=classes))
-
-    if plotConfusion:
-        cnf_matrix = confusion_matrix(y_true, y_pred)
-        plot_confusion_matrix(cnf_matrix, classes=classes,
-                              title=(model + ' Confusion Matrix'))

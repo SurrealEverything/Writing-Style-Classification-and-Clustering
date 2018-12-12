@@ -8,11 +8,11 @@ Created on Tue Dec  4 04:45:07 2018
 from sklearn.cluster import AgglomerativeClustering
 
 
-def agglomerative(X_train):
+def agglomerative(X, n_clusters=20):
 
-    model = AgglomerativeClustering(n_clusters=20)
+    model = AgglomerativeClustering(n_clusters=n_clusters)
 
-    model.fit(X_train)
+    model.fit(X)
 
     y = model.labels_
 

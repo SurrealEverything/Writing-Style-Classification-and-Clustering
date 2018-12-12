@@ -42,9 +42,9 @@ def writeParamsToFile(modelName, paramsGd, stop, best_score):
     f.write(params)
 
 
-def gridSearch(X_train, y_train, model, param_grid):
+def gridSearch(X_train, y_train, model, param_grid, scorer=None):
 
-    grid_search = GridSearchCV(model, param_grid, cv=3,
+    grid_search = GridSearchCV(model, param_grid, scoring=scorer, cv=3,
                                error_score=np.nan, n_jobs=1, verbose=0)
 
     start = time()

@@ -1,2 +1,3 @@
 t=226, s=0: SVC(C = 0.001)
 t=13890, s=0.946875: SVC(C=30, gamma=1, kernel='rbf')
+t=0, s=0.4554236053128099: KMeans(init='k-means++', n_clusters=20)

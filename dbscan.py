@@ -8,11 +8,11 @@ Created on Tue Dec  4 04:40:29 2018
 from sklearn.cluster import DBSCAN
 
 
-def dbscan(X_train):
+def dbscan(X, eps=0.22, min_samples=2):
 
-    model = DBSCAN()
+    model = DBSCAN(eps=eps, min_samples=min_samples)
 
-    model.fit(X_train)
+    model.fit(X)
 
     y = model.labels_
 
